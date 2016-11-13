@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Login</title>
-
 	<style >
 			body{
 	background: url(fbl-copam2016-bra-per.jpg) no-repeat 50% 50% fixed;
@@ -13,13 +12,11 @@
 }
 .main {
 	width: 560px; 
-	height: 80px; 
+	height: 120px; 
 	margin: 25px auto; 
 	background: url(pt.png); 
 	color: #ddd;padding: 15px
 }
-
-
 	</style>
 </head>
 <body>
@@ -41,11 +38,11 @@ if (isset($_GET['logout'])){
 	session_unregister('username');
 }
 ?>
-<br><br>
+<br>
 <div align="center"><img class="copa-logo" src="logo.png"></div>
 <br><br><br>
 
-<div align="center" class="main">
+<div align="center" class="main"><br>
 <form method="post">
 	<table cellspacing="2" cellpadding="2" border="0">
 	<tr>
@@ -56,6 +53,7 @@ if (isset($_GET['logout'])){
 		<td>Password</td>
 		<td><input type="password" name="password"></td>
 	</tr>
+
 		<tr>
 		<td>&nbsp;</td>
 		<td><input type="submit" name="bttLogin" value="Login"></td>
