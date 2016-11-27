@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2016 at 01:45 PM
+-- Generation Time: Nov 27, 2016 at 05:58 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -74,6 +74,20 @@ CREATE TABLE `coach_info` (
   `experience` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `coach_info`
+--
+
+INSERT INTO `coach_info` (`coach_id`, `coach_name`, `coach_state`, `experience`) VALUES
+(1000, 'Diego Maradona', '', ''),
+(1100, 'Jorge Sampaoli', '', ''),
+(1400, 'Bruce Arena''s', '', ''),
+(1500, 'Jose Pekerman', '', ''),
+(2000, 'Dunga', '', ''),
+(2100, 'Daniel Almeida', '', ''),
+(2500, 'Juan Carlos Osorio', '', ''),
+(2600, 'Winfried Schafer', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -84,16 +98,40 @@ CREATE TABLE `group_info` (
   `group_name` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `group_info`
+--
+
+INSERT INTO `group_info` (`group_name`) VALUES
+('A'),
+('B'),
+('C'),
+('D');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group_team`
+-- Table structure for table `group_t`
 --
 
-CREATE TABLE `group_team` (
-  `group_name` varchar(10) NOT NULL,
-  `team_id` int(20) NOT NULL
+CREATE TABLE `group_t` (
+  `group_name` varchar(20) NOT NULL,
+  `team_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `group_t`
+--
+
+INSERT INTO `group_t` (`group_name`, `team_id`) VALUES
+('D', '10'),
+('D', '11'),
+('C', '25'),
+('C', '26'),
+('B', '20'),
+('B', '21'),
+('A', '14'),
+('A', '15');
 
 -- --------------------------------------------------------
 
@@ -115,8 +153,8 @@ CREATE TABLE `player_info` (
 --
 
 INSERT INTO `player_info` (`player_id`, `player_name`, `jursy_number`, `age`, `team_id`, `present`) VALUES
-(1111, 'sss', '111111', '202', 10, 'yyyy'),
-(11112, 'infinity', '10000000222', '202s', 10, 'yyyy');
+(111, 'abdullah', '10', '21', 11, 'yeas'),
+(11112, 'Leo Messi', '10', '34', 10, 'y');
 
 -- --------------------------------------------------------
 
@@ -129,6 +167,16 @@ CREATE TABLE `round_info` (
   `round_name` varchar(20) NOT NULL,
   `group_name` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `round_info`
+--
+
+INSERT INTO `round_info` (`round_id`, `round_name`, `group_name`) VALUES
+(1, 'First', 'A'),
+(2, 'First', 'B'),
+(3, 'First', 'C'),
+(4, 'First', 'D');
 
 -- --------------------------------------------------------
 
@@ -145,6 +193,13 @@ CREATE TABLE `schedule_info` (
   `time` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `schedule_info`
+--
+
+INSERT INTO `schedule_info` (`schedule_id`, `participants_name`, `venue_id`, `round_id`, `date`, `time`) VALUES
+(1110000, 'USA vs Colombia', 201, 1, '20-10-17', '10.30AM');
+
 -- --------------------------------------------------------
 
 --
@@ -157,6 +212,20 @@ CREATE TABLE `team_info` (
   `flag` varchar(20) NOT NULL,
   `coach_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `team_info`
+--
+
+INSERT INTO `team_info` (`team_id`, `team_name`, `flag`, `coach_id`) VALUES
+(10, 'Argentina', '', 1000),
+(11, 'Chile', 'loading', 1100),
+(14, 'USA', '', 1400),
+(15, 'Colombia', '', 1500),
+(20, 'Brazil', '', 2000),
+(21, 'Ecuador', '', 2100),
+(25, 'Maxico', '', 2500),
+(26, 'Jamaica', '', 2600);
 
 -- --------------------------------------------------------
 
@@ -172,6 +241,14 @@ CREATE TABLE `venue_info` (
   `highest_goal` varchar(20) NOT NULL,
   `total_match` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `venue_info`
+--
+
+INSERT INTO `venue_info` (`venue_id`, `venue_name`, `location`, `weather`, `highest_goal`, `total_match`) VALUES
+(201, 'MetLife Stadium', ' New Jersey', '', '', ''),
+(202, 'NRG Stadium', 'Houston Texans', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -200,6 +277,12 @@ ALTER TABLE `group_info`
 --
 ALTER TABLE `player_info`
   ADD PRIMARY KEY (`player_id`);
+
+--
+-- Indexes for table `round_info`
+--
+ALTER TABLE `round_info`
+  ADD PRIMARY KEY (`round_id`);
 
 --
 -- Indexes for table `schedule_info`
