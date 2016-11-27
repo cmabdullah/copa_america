@@ -6,6 +6,67 @@
 
 <body>
 <h1>Participators </h1>
+
+
+<?php
+
+       mysql_connect ("localhost", "root","")  or die (mysql_error());
+mysql_select_db ("copa_america");
+
+        // get results from database
+        $result = mysql_query(("SELECT team_info.team_name,  group_t.group_name FROM team_info INNER JOIN group_t  ON 
+          team_info.team_id = group_t.team_id ")      )
+                or die(mysql_error());  
+                
+        // display data in table
+        echo "<div align='center'><b>Team and group info</b> </div> <br>";
+         
+      echo " <div align='center'> "   ;
+
+        echo "<table border='1' cellpadding='10'>";
+        echo "<tr>  <th width=100>team_name</th> <th width=100>group name</th>";
+        while($row = mysql_fetch_array( $result )) {
+
+                echo "<tr>";
+
+                echo '<td >' . $row['team_name'] . '</td>';
+                echo '<td >' .'Group '. $row['group_name'] . '</td>';
+                echo "</tr>"; 
+        } 
+
+        // close table>
+        echo "</table>";
+
+        echo "</div>";
+?>
+<br><br>
+<hr>
+
+
+
+
+<h1>team name , date , vanue , result</h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+
+
 <table width="90%" border="1">
   <tr>
     <td width="250"><strong>Group A</strong></td>
@@ -26,6 +87,9 @@
     <td><strong>Chili</strong></td>
   </tr>
 </table>
+
+<hr>
+
 <h1>First round</h1>
 <table width="90%" border="1">
   <tr>
@@ -196,5 +260,7 @@
   </tr>
 </table>
 <p>&nbsp;</p>
+
+
 </body>
 </html>
