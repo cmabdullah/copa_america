@@ -47,7 +47,7 @@ mysql_select_db ("copa_america");
       echo " <div align='center'> "   ;
 
         echo "<table border='1' cellpadding='10'>";
-        echo "<tr> <th>Name</th> <th>Jursy No</th> <th>age</th>  <th>present</th>";
+        echo "<tr> <th width=100>Name</th> <th width=100>Jursy No</th> <th width=100>age</th>  <th width=100>present</th>";
 
         // loop through results of database query, displaying them in the table
         while($row = mysql_fetch_array( $result )) {
@@ -64,12 +64,37 @@ mysql_select_db ("copa_america");
                 
 				//echo '<td><a href="edit_stu_info.php?id=' . $row['id'] . '">Edit</a></td>';
                 echo "</tr>"; 
+
         } 
 
         // close table>
         echo "</table>";
 
         echo "</div>";
+
+      echo " <div align='center'> "   ;
+
+        echo "<table border='0' cellpadding='10'>";
+        echo "	 <tr>   <th ></th> 
+       			 		<th ></th> 
+        		 		<th ></th>";
+
+
+        		 				echo "<tr>";
+                echo '<td  >' . '<a href="#insert.php"> ' . 'Insert ' . ' </a> ' . '</td>';
+                echo '<td >' .'<a href="#insert.php"> ' . 'Delete ' . ' </a> '. '</td>';
+                echo '<td >' . '<a href="#insert.php"> ' . 'Update ' . ' </a> '. '</td>';
+
+
+                echo "</tr>"; 
+       
+        echo "</table>";
+
+        echo "</div>";
+
+
+
+
 ?>
 <br><br>
 <hr>
