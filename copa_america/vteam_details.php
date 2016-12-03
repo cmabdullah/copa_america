@@ -47,7 +47,7 @@ mysql_select_db ("copa_america");
       echo " <div align='center'> "   ;
 
         echo "<table border='1' cellpadding='10'>";
-        echo "<tr> <th width=100>Name</th> <th width=100>Jursy No</th> <th width=100>age</th>  <th width=100>present</th>";
+        echo "<tr> <th width=100>Name</th> <th width=100>Jursy No</th> <th width=100>age</th>  <th width=100>present</th> <th>Action</th>";
 
         // loop through results of database query, displaying them in the table
         while($row = mysql_fetch_array( $result )) {
@@ -59,6 +59,7 @@ mysql_select_db ("copa_america");
 
 				echo '<td>' . $row['age'] . '</td>';
                 echo '<td>' . $row['present'] . '</td>';
+                echo '<td>' .  '<a href="pupdate.php"> ' . 'Update ' . ' </a> ' .  '<a href="pdelete.php"> ' . '| Delete ' . ' </a> '   . '</td>';
                 
                 
                 
@@ -81,9 +82,9 @@ mysql_select_db ("copa_america");
 
 
         		 				echo "<tr>";
-                echo '<td  >' . '<a href="#insert.php"> ' . 'Insert ' . ' </a> ' . '</td>';
-                echo '<td >' .'<a href="#insert.php"> ' . 'Delete ' . ' </a> '. '</td>';
-                echo '<td >' . '<a href="#insert.php"> ' . 'Update ' . ' </a> '. '</td>';
+                echo '<td  >' . '<a href="insert.php"> ' . 'Insert ' . ' </a> ' . '</td>';
+                echo '<td >' .'<a href="insert.php"> ' . 'Delete ' . ' </a> '. '</td>';
+                echo '<td >' . '<a href="insert.php"> ' . 'Update ' . ' </a> '. '</td>';
 
 
                 echo "</tr>"; 
@@ -107,13 +108,14 @@ mysql_select_db ("copa_america");
         echo "<p><b>Brazilian player info</b> </p>";   
       echo " <div align='center'> "   ;
         echo "<table border='1' cellpadding='10'>";
-        echo "<tr> <th>Name</th> <th>Jursy No</th> <th>age</th>  <th>present</th>";
+        echo "<tr> <th>Name</th> <th>Jursy No</th> <th>age</th>  <th>present</th> ";
         while($row = mysql_fetch_array( $result )) {
                 echo "<tr>";
                 echo '<td>' . $row['player_name'] . '</td>';
                 echo '<td>' . $row['jursy_number'] . '</td>';
                 echo '<td>' . $row['age'] . '</td>';
                 echo '<td>' . $row['present'] . '</td>';
+                
                 
                 echo "</tr>"; 
         } 
@@ -287,6 +289,17 @@ mysql_select_db ("copa_america");
 ?>
 <br><br>
 <hr>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

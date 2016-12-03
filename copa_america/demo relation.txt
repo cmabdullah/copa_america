@@ -1,0 +1,24 @@
+TableA - aID | nameA | dID
+          10 | ta    |  40 |
+
+TableB - bID | nameB | cID | aID
+         20  | tb    | 30  | 10 
+
+
+TableC - cID | nameC | date
+          30 | tc    | 20-12-15
+
+TableD - dID | nameD
+          40 | td   |
+
+SELECT 
+player_info.player_name, 
+team_info.team_name, 
+FROM 
+player_info 
+
+INNER JOIN 
+team_info  
+
+ON player_info.team_id = team_info.team_id
+

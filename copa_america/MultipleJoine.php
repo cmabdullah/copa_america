@@ -1,36 +1,84 @@
-<html >
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>football match fixture</title>
+        <title>View Records</title>
+		
 </head>
-
 <body>
-<h1>Participators </h1>
-
-
 <?php
 
+/* 
+        VIEW.PHP
+        Displays all data from 'players' table
+*/
+
+
+        /****
+        Group D
+            team id = argentina = 10
+                    chile = 11
+                    
+
+         Group A
+                    USA = 14
+                    colombia  = 15
+        Group B 
+                    Brazil = 20
+                    Ecuador = 21
+         
+         group C
+                    maxico = 25
+                    jamaica  = 26
+
+
+
+        **/
+
+        // connect to the database
        mysql_connect ("localhost", "root","")  or die (mysql_error());
 mysql_select_db ("copa_america");
 
         // get results from database
-        $result = mysql_query(("SELECT team_info.team_name,  group_t.group_name FROM team_info INNER JOIN group_t  ON 
-          team_info.team_id = group_t.team_id ")      )
+        $result = mysql_query(
+
+
+                (
+                    "           SELECT tablea.*, tableb.*, tablec.*, tabled.*
+                                    FROM tablea
+                                        JOIN tableb
+                                            ON tableb.aID = tablea.aID
+                                        JOIN tablec
+                                            ON tablec.cID = tableb.cID
+                                        JOIN tabled
+                                            ON tabled.dID = tablea.dID
+                                    -- WHERE DATE(tablec.date)=date(now())  "
+                )      
+
+
+
+            )
                 or die(mysql_error());  
                 
         // display data in table
-        echo "<div align='center'><b>Team and group info</b> </div> <br>";
+        echo "<div align='center'><b>join operation</b> </div> <br>";
          
       echo " <div align='center'> "   ;
 
         echo "<table border='1' cellpadding='10'>";
-        echo "<tr>  <th width=100>team_name</th> <th width=100>group name</th>";
+        echo "<tr> <th width=100>nameA</th> <th width=100>nameB</th> <th width=100>nameC</th><th width=100>nameD</th>";
+ 
+        // loop through results of database query, displaying them in the table
         while($row = mysql_fetch_array( $result )) {
-
+                
+                // echo out the contents of each row into a table
                 echo "<tr>";
-
-                echo '<td >' . $row['team_name'] . '</td>';
-                echo '<td >' .'Group '. $row['group_name'] . '</td>';
+                echo '<td  >' . $row['nameA'] . '</td>';
+                echo '<td >' . $row['nameB'] . '</td>';
+                echo '<td >' . $row['nameC'] . '</td>';
+                echo '<td >' . $row['nameD'] . '</td>';
+                
+                
+                
+				//echo '<td><a href="edit_stu_info.php?id=' . $row['id'] . '">Edit</a></td>';
                 echo "</tr>"; 
         } 
 
@@ -41,27 +89,6 @@ mysql_select_db ("copa_america");
 ?>
 <br><br>
 <hr>
-
-
-
-<div align="center"><h1>First round</h1></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -404,6 +431,16 @@ mysql_select_db ("copa_america");
 
 
 
+
+
+
+
+
+
+
+
+
+
 <hr>
 <?php
 
@@ -558,6 +595,32 @@ mysql_select_db ("copa_america");
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <hr>
 <?php
 
@@ -663,16 +726,5 @@ mysql_select_db ("copa_america");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 </body>
-</html>
+</html> 

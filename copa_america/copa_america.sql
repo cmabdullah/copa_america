@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2016 at 05:58 PM
+-- Generation Time: Dec 03, 2016 at 09:16 PM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -176,7 +176,10 @@ INSERT INTO `round_info` (`round_id`, `round_name`, `group_name`) VALUES
 (1, 'First', 'A'),
 (2, 'First', 'B'),
 (3, 'First', 'C'),
-(4, 'First', 'D');
+(4, 'First', 'D'),
+(5, 'Semi Final', ''),
+(6, 'Semi Final', ''),
+(7, 'Final', '');
 
 -- --------------------------------------------------------
 
@@ -186,7 +189,7 @@ INSERT INTO `round_info` (`round_id`, `round_name`, `group_name`) VALUES
 
 CREATE TABLE `schedule_info` (
   `schedule_id` int(20) NOT NULL,
-  `participants_name` varchar(20) NOT NULL,
+  `participants_name` varchar(100) NOT NULL,
   `venue_id` int(20) NOT NULL,
   `round_id` int(20) NOT NULL,
   `date` varchar(20) NOT NULL,
@@ -198,7 +201,89 @@ CREATE TABLE `schedule_info` (
 --
 
 INSERT INTO `schedule_info` (`schedule_id`, `participants_name`, `venue_id`, `round_id`, `date`, `time`) VALUES
-(1110000, 'USA vs Colombia', 201, 1, '20-10-17', '10.30AM');
+(20002, 'Group A vs Group B', 505, 5, '12-12-17', ''),
+(20003, 'Group C vs Group D', 303, 6, '14-12-17', ''),
+(20009, 'Winner from (Group A vs Group B) vs (Group C vs Group D)', 202, 7, '30-12-2017', ''),
+(111222, '', 201, 2, '22-11-17', '11.30AM'),
+(333444, '', 202, 3, '29-12-2017', ''),
+(666777, '', 303, 4, '5-10-17', ''),
+(1110000, '', 505, 1, '20-10-17', '10.30AM');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tablea`
+--
+
+CREATE TABLE `tablea` (
+  `aID` varchar(20) NOT NULL,
+  `nameA` varchar(20) NOT NULL,
+  `dID` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tablea`
+--
+
+INSERT INTO `tablea` (`aID`, `nameA`, `dID`) VALUES
+('10', 'ta', '40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tableb`
+--
+
+CREATE TABLE `tableb` (
+  `bID` varchar(20) NOT NULL,
+  `nameB` varchar(20) NOT NULL,
+  `cID` varchar(20) NOT NULL,
+  `aID` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tableb`
+--
+
+INSERT INTO `tableb` (`bID`, `nameB`, `cID`, `aID`) VALUES
+('20', 'tb', '30', '10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tablec`
+--
+
+CREATE TABLE `tablec` (
+  `cID` varchar(20) NOT NULL,
+  `nameC` varchar(20) NOT NULL,
+  `date` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tablec`
+--
+
+INSERT INTO `tablec` (`cID`, `nameC`, `date`) VALUES
+('30', 'tc', '20-12-15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tabled`
+--
+
+CREATE TABLE `tabled` (
+  `dID` varchar(20) NOT NULL,
+  `nameD` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tabled`
+--
+
+INSERT INTO `tabled` (`dID`, `nameD`) VALUES
+('40', 'td');
 
 -- --------------------------------------------------------
 
@@ -248,7 +333,9 @@ CREATE TABLE `venue_info` (
 
 INSERT INTO `venue_info` (`venue_id`, `venue_name`, `location`, `weather`, `highest_goal`, `total_match`) VALUES
 (201, 'MetLife Stadium', ' New Jersey', '', '', ''),
-(202, 'NRG Stadium', 'Houston Texans', '', '', '');
+(202, 'NRG Stadium', 'Houston Texans', '', '', ''),
+(303, 'Levi''s Stadium', ' San Francisco', '', '', ''),
+(505, 'Michigan Stadium', 'Ann Arbor', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -289,6 +376,24 @@ ALTER TABLE `round_info`
 --
 ALTER TABLE `schedule_info`
   ADD PRIMARY KEY (`schedule_id`);
+
+--
+-- Indexes for table `tableb`
+--
+ALTER TABLE `tableb`
+  ADD PRIMARY KEY (`bID`);
+
+--
+-- Indexes for table `tablec`
+--
+ALTER TABLE `tablec`
+  ADD PRIMARY KEY (`cID`);
+
+--
+-- Indexes for table `tabled`
+--
+ALTER TABLE `tabled`
+  ADD PRIMARY KEY (`dID`);
 
 --
 -- Indexes for table `team_info`
